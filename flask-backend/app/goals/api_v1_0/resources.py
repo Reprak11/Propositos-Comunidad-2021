@@ -7,12 +7,16 @@ goals_v1_0_bp = Blueprint('goals_v1_0_bp', __name__)
 goal_schema = GoalSchema()
 api = Api(goals_v1_0_bp)
 
+class PruebaListResource(Resource):
+    def get(self):
+        return "Hola Mundo"
+
 class GoalListResource(Resource):
     def get(self):
         goals = Goal.get_all()
-        if goals is None:
+        if goals is None or goals is []:
             raise ObjectNotFound('No hay usuarios')
-        result = goal_schema.dump(films, many=True)
+        result = goal_schema.dump(goals, many=True)
         return result
 
 class GoalAddResource(Resource):
@@ -27,8 +31,10 @@ class GoalAddResource(Resource):
                     contact=goal_dict['contact']
         )
         goal.save()
-        resp = goal_schema.dump(film)
+        resp = goal_schema.dump(data)
         return resp, 201
 
-api.add_resource(GoalListResource, '/api/v1.0/goals/', endpoint='goals_resource')
-api.add_resource(GoalAddResource, '/api/v1.0/addgoal/', endpoint='addgoal_resource')
+
+api.add_resource(PruebaListResource, '/api/v1/0/prueba/', endpoint='prueba_resource')
+api.add_resource(GoalListResource, '/api/v1/0/goals/', endpoint='goals_resource')
+api.add_resource(GoalAddResource, '/api/v1/0/addgoal/', endpoint='addgoal_resource')

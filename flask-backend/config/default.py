@@ -1,0 +1,10 @@
+SECRET_KEY = 'kEPiWoToNhvwmMrWeAs5'
+
+PROPAGATE_EXCEPTIONS = True
+# Database configuration
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:reprak11@localhost/goals_db'
+SQLALCHEMY_POOL_RECYCLE = 60
+SQLALCHEMY_TRACK_MODIFICATIONS = False
+SHOW_SQLALCHEMY_LOG_MESSAGES = False
+
+ERROR_404_HELP = False
