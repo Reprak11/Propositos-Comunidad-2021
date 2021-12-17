@@ -4,6 +4,7 @@ from app.common.error_handling import ObjectNotFound, AppErrorBaseClass
 from app.db import db
 from app.goals.api_v1_0.resources import goals_v1_0_bp
 from .ext import ma, migrate
+from flask_cors import CORS
 def create_app(settings_module):
     app = Flask(__name__)
     app.config.from_object(settings_module)
@@ -19,6 +20,13 @@ def create_app(settings_module):
     app.register_blueprint(goals_v1_0_bp)
     # Registra manejadores de errores personalizados
     register_error_handlers(app)
+    CORS(app)
+
+    cors=CORS(app, resources={
+        r"/*":{
+            "origins": "*"
+        }
+    })
     return app
 def register_error_handlers(app):
     @app.errorhandler(Exception)

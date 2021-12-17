@@ -53,7 +53,11 @@ body, html{
         width: 14rem;
         word-break: break-word;
         border: 0;
+
     }
+        .add-goal:hover{
+            background: #ad0622;
+        }
 }
 
 .title-box{
@@ -84,5 +88,29 @@ body, html{
         background-color: $goal-background;
         border-radius: 1%;
         box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+        .user-list{
+            list-style-type: none;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            .one-user{
+                font-weight: bold;
+                padding-top: 0.8rem ;
+                border-bottom: #fff solid;
+                .user-list-name{
+                    margin-left: 1.5rem;
+                    margin-bottom: 1rem;
+                    color: #fff;
+                    font-size: 30px;
+                }
+            }
+        }
     }
+        .list-goals{
+            .one-user:hover{
+                background-color: #ad0622;
+                cursor: pointer;
+            }
+        }
 }

@@ -11,6 +11,13 @@ class PruebaListResource(Resource):
     def get(self):
         return "Hola Mundo"
 
+class OneGoalListResource(Resource):
+    def get(self):
+        devName = request.headers.get('name')
+        user = Goal.simple_filter(name=devName)
+        resp = goal_schema.dump(user[0])
+        return resp
+
 class GoalListResource(Resource):
     def get(self):
         goals = Goal.get_all()
@@ -37,4 +44,5 @@ class GoalAddResource(Resource):
 
 api.add_resource(PruebaListResource, '/api/v1/0/prueba/', endpoint='prueba_resource')
 api.add_resource(GoalListResource, '/api/v1/0/goals/', endpoint='goals_resource')
+api.add_resource(OneGoalListResource, '/api/v1/0/onegoal/', endpoint='one_goal_resource')
 api.add_resource(GoalAddResource, '/api/v1/0/addgoal/', endpoint='addgoal_resource')
